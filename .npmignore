@@ -1,0 +1,11 @@
+.nyc_output/
+coverage/
+node_modules/
+src/
+.gitignore
+.nycrc
+README.md
+tslint.json
+yarn-error.log
+yarn.lock
+dist/**/*.spec.js
