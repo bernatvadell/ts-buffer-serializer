@@ -2891,10 +2891,10 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
-stream-binary@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/stream-binary/-/stream-binary-1.1.1.tgz#daf7c8697285fd1d90225500c36da56caced6f82"
-  integrity sha512-uDfjSl0U/vfNhTfm4fJNt43g3PCvE+t2jkqRsJgHhJ536OKx0RpFZfn6NvOGrXyhCF1Iek1OL/pbTN7LOWs+pw==
+stream-binary@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/stream-binary/-/stream-binary-1.2.0.tgz#d1817308eedfa23e0b2d06b1771775a056c39940"
+  integrity sha512-as1kEJYwgEYgWQrKcLVYi/9Ec5qDquDunZx3X3NmQioNtFyaAKw6b4+nfp5299rV1Yu50VU2CjNpzQS27QBqwg==
 
 stream-browserify@^2.0.2:
   version "2.0.2"
