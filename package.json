@@ -1,6 +1,6 @@
 {
   "name": "ts-buffer-serializer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "https://github.com/bernatvadell/ts-buffer-serializer.git",
   "author": "Bernat Vadell <bvadell@feimsoft.com>",
@@ -32,6 +32,6 @@
     "typescript": "^3.7.2"
   },
   "dependencies": {
-    "stream-binary": "^1.1.1"
+    "stream-binary": "^1.2.0"
   }
 }
