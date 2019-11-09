@@ -1,4 +1,4 @@
-# TS Binary Serializer
+# TS Buffer Serializer
 
 ## Overview
 Transform objects into binary representations to reduce the size of packet delivery over the network.
@@ -7,11 +7,11 @@ Transform objects into binary representations to reduce the size of packet deliv
 ## Installing in your project...
 npm:
 ```
-npm install ts-binary-serializer
+npm install ts-buffer-serializer
 ```
 yarn:
 ```
-yarn add ts-binary-serializer
+yarn add ts-buffer-serializer
 ```
 
 ## BinarySerializer example

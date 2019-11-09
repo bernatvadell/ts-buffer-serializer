@@ -1,8 +1,8 @@
 {
-  "name": "ts-binary-serializer",
+  "name": "ts-buffer-serializer",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/bernatvadell/ts-binary-serializer.git",
+  "repository": "https://github.com/bernatvadell/ts-buffer-serializer.git",
   "author": "Bernat Vadell <bvadell@feimsoft.com>",
   "license": "MIT",
   "scripts": {
