@@ -1,6 +1,6 @@
 import { register } from './register.field';
 import { assert } from 'chai';
-import { ObjectWithProps } from './interfaces.field';
+import { ObjectWithProps, FieldSerializer } from './interfaces.field';
 
 it('Register any decorator', () => {
     const obj = {
@@ -10,16 +10,19 @@ it('Register any decorator', () => {
     const serialize = (value, stream) => stream.writeString(value);
     const deserialize = (stream) => stream.readString();
 
+    const serializer: FieldSerializer = {
+        serialize,
+        deserialize,
+    };
+
     register<string>(
         obj,
         'say',
-        serialize,
-        deserialize,
+        serializer,
     );
 
     const objWithProps = (obj as ObjectWithProps);
     assert.isDefined(objWithProps.__serializer__);
     assert.isDefined(objWithProps.__serializer__.say);
-    assert.equal(objWithProps.__serializer__.say.serializer, serialize);
-    assert.equal(objWithProps.__serializer__.say.deserializer, deserialize);
+    assert.equal(objWithProps.__serializer__.say, serializer);
 });

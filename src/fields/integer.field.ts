@@ -1,13 +1,8 @@
-import { register } from './register.field';
-import { ObjectWithProps } from './interfaces.field';
+import { buildField } from './register.field';
 
-export default function Integer() {
-    return (target: ObjectWithProps, property: string | symbol) => {
-        register<number>(
-            target,
-            property,
-            (value, stream) => stream.writeInt(value),
-            (stream) => stream.readInt(),
-        );
-    };
-}
+const Integer = buildField<number>({
+    serialize: (value, stream) => stream.writeInt(value),
+    deserialize: (stream) => stream.readInt(),
+});
+
+export default Integer;

@@ -1,13 +1,8 @@
-import { register } from './register.field';
-import { ObjectWithProps } from './interfaces.field';
+import { buildField } from './register.field';
 
-export default function Double() {
-    return (target: ObjectWithProps, property: string | symbol) => {
-        register<number>(
-            target,
-            property,
-            (value, stream) => stream.writeDouble(value),
-            (stream) => stream.readDouble(),
-        );
-    };
-}
+const Double = buildField<number>({
+    serialize: (value, stream) => stream.writeDouble(value),
+    deserialize: (stream) => stream.readDouble(),
+});
+
+export default Double;

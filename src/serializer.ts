@@ -9,7 +9,7 @@ export class BinarySerializer {
         const props: IPropsType = Object.getPrototypeOf(object)[propertySerializerName];
         // tslint:disable-next-line: forin
         for (const prop in props) {
-            props[prop].serializer(object[prop], bw);
+            props[prop].serialize(object[prop], bw);
         }
         return bw.getBuffer();
     }
@@ -20,7 +20,7 @@ export class BinarySerializer {
         const result = new classType();
         // tslint:disable-next-line: forin
         for (const prop in props) {
-            result[prop] = props[prop].deserializer(br);
+            result[prop] = props[prop].deserialize(br);
         }
         return result;
     }

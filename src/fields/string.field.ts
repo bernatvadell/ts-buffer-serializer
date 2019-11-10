@@ -1,13 +1,8 @@
-import { register } from './register.field';
-import { ObjectWithProps } from './interfaces.field';
+import { buildField } from './register.field';
 
-export default function String() {
-    return (target: ObjectWithProps, property: string | symbol) => {
-        register<string>(
-            target,
-            property,
-            (value, stream) => stream.writeString(value),
-            (stream) => stream.readString(),
-        );
-    };
-}
+const FieldString = buildField<string>({
+    serialize: (value, stream) => stream.writeString(value),
+    deserialize: (stream) => stream.readString(),
+});
+
+export default FieldString;

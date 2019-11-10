@@ -1,13 +1,8 @@
-import { register } from './register.field';
-import { ObjectWithProps } from './interfaces.field';
+import { buildField } from './register.field';
 
-export default function Short() {
-    return (target: ObjectWithProps, property: string | symbol) => {
-        register<number>(
-            target,
-            property,
-            (value, stream) => stream.writeShort(value),
-            (stream) => stream.readShort(),
-        );
-    };
-}
+const Short = buildField<number>({
+    serialize: (value, stream) => stream.writeShort(value),
+    deserialize: (stream) => stream.readShort(),
+});
+
+export default Short;
