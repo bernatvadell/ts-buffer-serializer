@@ -1,6 +1,7 @@
 import fields from './fields';
 import { BinarySerializer } from './';
 import { assert } from 'chai';
+import { BinaryWriter, BinaryReader } from 'stream-binary';
 
 class PlayerClass {
     @fields.String() name: string;
@@ -13,6 +14,7 @@ class PlayerClass {
 }
 
 it('[BE] Test serialize an object', () => {
+    const bw = new BinaryWriter();
     const player = new PlayerClass();
     player.name = 'Harry Potter';
     player.level = 200;
@@ -22,14 +24,15 @@ it('[BE] Test serialize an object', () => {
     player.floatValue = 14.140000343322754;
     player.byteArray = [60, 50, 30];
 
-    const buffer = BinarySerializer.serialize(player);
+    const buffer = BinarySerializer.serialize(player, bw);
 
     assert.equal(buffer.toString('hex'), '000c486172727920506f74746572c8000003e8021f40283d70a3d70a3d41623d7100033c321e');
 });
 
 it('[BE] Test deserialize an object', () => {
     const buffer = Buffer.from('000c486172727920506f74746572c8000003e8021f40283d70a3d70a3d41623d7100033c321e', 'hex');
-    const player = BinarySerializer.deserialize(PlayerClass, buffer);
+    const br = new BinaryReader(buffer);
+    const player = BinarySerializer.deserialize(PlayerClass, br);
 
     assert.isDefined(player);
     assert.instanceOf(player, PlayerClass);
@@ -43,6 +46,7 @@ it('[BE] Test deserialize an object', () => {
 });
 
 it('[LE] Test serialize an object', () => {
+    const bw = new BinaryWriter(true);
     const player = new PlayerClass();
     player.name = 'Harry Potter';
     player.level = 200;
@@ -52,14 +56,15 @@ it('[LE] Test serialize an object', () => {
     player.floatValue = 14.140000343322754;
     player.byteArray = [60, 50, 30];
 
-    const buffer = BinarySerializer.serialize(player, true);
+    const buffer = BinarySerializer.serialize(player, bw);
 
     assert.equal(buffer.toString('hex'), '0c00486172727920506f74746572c8e80300001f023d0ad7a3703d2840713d624103003c321e');
 });
 
 it('[LE] Test deserialize an object', () => {
     const buffer = Buffer.from('0c00486172727920506f74746572c8e80300001f023d0ad7a3703d2840713d624103003c321e', 'hex');
-    const player = BinarySerializer.deserialize(PlayerClass, buffer, true);
+    const br = new BinaryReader(buffer, true);
+    const player = BinarySerializer.deserialize(PlayerClass, br);
 
     assert.isDefined(player);
     assert.instanceOf(player, PlayerClass);

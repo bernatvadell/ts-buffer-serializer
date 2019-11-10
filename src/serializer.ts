@@ -4,8 +4,7 @@ import { IPropsType } from './fields/interfaces.field';
 
 export class BinarySerializer {
 
-    static serialize<T>(object: T, littleEndian: boolean = false): Buffer {
-        const bw = new BinaryWriter(littleEndian);
+    static serialize<T>(object: T, bw: BinaryWriter): Buffer {
         const props: IPropsType = Object.getPrototypeOf(object)[propertySerializerName];
         // tslint:disable-next-line: forin
         for (const prop in props) {
@@ -14,8 +13,7 @@ export class BinarySerializer {
         return bw.getBuffer();
     }
 
-    static deserialize<T>(classType: new (...args: any[]) => T, buffer: Buffer, littleEndian: boolean = false): T {
-        const br = new BinaryReader(buffer, littleEndian);
+    static deserialize<T>(classType: new (...args: any[]) => T, br: BinaryReader): T {
         const props: IPropsType = classType.prototype[propertySerializerName];
         const result = new classType();
         // tslint:disable-next-line: forin
