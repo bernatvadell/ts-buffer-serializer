@@ -39,13 +39,11 @@ player.decimalValue = 12.12;
 player.floatValue = 14.140000343322754;
 player.byteArray = [60, 50, 30];
 
-const bw = new BinaryWriter();
-const buffer = BinarySerializer.serialize(player, bw); // 000c486172727920506f74746572c8000003e8021f40283d70a3d70a3d41623d7100033c321e
+const buffer = BinarySerializer.serialize(player); // 000c486172727920506f74746572c8000003e8021f40283d70a3d70a3d41623d7100033c321e
 ```
 
 ### Deserializing
 ```ts
 const buffer = Buffer.from('000c486172727920506f74746572c8000003e8021f40283d70a3d70a3d41623d7100033c321e', 'hex');
-const br = new BinaryReader(buffer);
-const player = BinarySerializer.deserialize(PlayerClass, br);
+const player = BinarySerializer.deserialize(PlayerClass, buffer);
 ```
