@@ -1,11 +1,11 @@
 import { assert } from 'chai';
-import { ObjectWithProps } from './interfaces.decorator';
-import Double from './double.decorator';
+import Byte from './byte.field';
+import { ObjectWithProps } from './interfaces.field';
 
-it('Register double decorator', () => {
+it('Register byte decorator', () => {
 
     class TestClass {
-        @Double() value: number = 16535.15;
+        @Byte() value: number = 16535;
     }
 
     const objWithProps = TestClass.prototype as ObjectWithProps;

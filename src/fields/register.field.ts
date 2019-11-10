@@ -1,4 +1,4 @@
-import { ObjectWithProps } from './interfaces.decorator';
+import { ObjectWithProps } from './interfaces.field';
 import { BinaryWriter, BinaryReader } from 'stream-binary';
 
 export const propertySerializerName = '__serializer__';

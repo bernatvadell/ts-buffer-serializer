@@ -1,11 +1,11 @@
 import { assert } from 'chai';
-import { ObjectWithProps } from './interfaces.decorator';
-import Float from './float.decorator';
+import Short from './short.field';
+import { ObjectWithProps } from './interfaces.field';
 
-it('Register float decorator', () => {
+it('Register short decorator', () => {
 
     class TestClass {
-        @Float() value: number = 16535.15;
+        @Short() value: number = 255;
     }
 
     const objWithProps = TestClass.prototype as ObjectWithProps;

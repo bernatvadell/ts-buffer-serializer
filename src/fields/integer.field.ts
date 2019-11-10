@@ -1,5 +1,5 @@
-import { register } from './register.decorator';
-import { ObjectWithProps } from './interfaces.decorator';
+import { register } from './register.field';
+import { ObjectWithProps } from './interfaces.field';
 
 export default function Integer() {
     return (target: ObjectWithProps, property: string | symbol) => {

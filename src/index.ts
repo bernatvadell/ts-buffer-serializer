@@ -1,7 +1,7 @@
-import decorators from './decorators';
+import fields from './fields';
 import { BinarySerializer } from './serializer';
 
 export {
-    decorators,
+    fields,
     BinarySerializer,
 };

@@ -1,6 +1,6 @@
 import { BinaryWriter, BinaryReader } from 'stream-binary';
-import { propertySerializerName } from './decorators/register.decorator';
-import { IPropsType } from './decorators/interfaces.decorator';
+import { propertySerializerName } from './fields/register.field';
+import { IPropsType } from './fields/interfaces.field';
 
 export class BinarySerializer {
 

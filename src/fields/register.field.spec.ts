@@ -1,6 +1,6 @@
-import { register } from './register.decorator';
+import { register } from './register.field';
 import { assert } from 'chai';
-import { ObjectWithProps } from './interfaces.decorator';
+import { ObjectWithProps } from './interfaces.field';
 
 it('Register any decorator', () => {
     const obj = {

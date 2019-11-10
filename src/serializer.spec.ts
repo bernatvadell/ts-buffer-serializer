@@ -1,18 +1,18 @@
-import decorators from './decorators';
+import fields from './fields';
 import { BinarySerializer } from './';
 import { assert } from 'chai';
 
-class TestClass {
-    @decorators.String() name: string;
-    @decorators.Byte() level: number;
-    @decorators.Integer() hp: number;
-    @decorators.Short() attack: number;
-    @decorators.Double() decimalValue: number;
-    @decorators.Float() floatValue: number;
+class PlayerClass {
+    @fields.String() name: string;
+    @fields.Byte() level: number;
+    @fields.Integer() hp: number;
+    @fields.Short() attack: number;
+    @fields.Double() decimalValue: number;
+    @fields.Float() floatValue: number;
 }
 
 it('[BE] Test serialize an object', () => {
-    const player = new TestClass();
+    const player = new PlayerClass();
     player.name = 'Harry Potter';
     player.level = 200;
     player.hp = 1000;
@@ -27,10 +27,10 @@ it('[BE] Test serialize an object', () => {
 
 it('[BE] Test deserialize an object', () => {
     const buffer = Buffer.from('000c486172727920506f74746572c8000003e8021f40283d70a3d70a3d41623d71', 'hex');
-    const player = BinarySerializer.deserialize(TestClass, buffer);
+    const player = BinarySerializer.deserialize(PlayerClass, buffer);
 
     assert.isDefined(player);
-    assert.instanceOf(player, TestClass);
+    assert.instanceOf(player, PlayerClass);
     assert.equal(player.name, 'Harry Potter');
     assert.equal(player.level, 200);
     assert.equal(player.hp, 1000);
@@ -40,7 +40,7 @@ it('[BE] Test deserialize an object', () => {
 });
 
 it('[LE] Test serialize an object', () => {
-    const player = new TestClass();
+    const player = new PlayerClass();
     player.name = 'Harry Potter';
     player.level = 200;
     player.hp = 1000;
@@ -55,10 +55,10 @@ it('[LE] Test serialize an object', () => {
 
 it('[LE] Test deserialize an object', () => {
     const buffer = Buffer.from('0c00486172727920506f74746572c8e80300001f023d0ad7a3703d2840713d6241', 'hex');
-    const player = BinarySerializer.deserialize(TestClass, buffer, true);
+    const player = BinarySerializer.deserialize(PlayerClass, buffer, true);
 
     assert.isDefined(player);
-    assert.instanceOf(player, TestClass);
+    assert.instanceOf(player, PlayerClass);
     assert.equal(player.name, 'Harry Potter');
     assert.equal(player.level, 200);
     assert.equal(player.hp, 1000);

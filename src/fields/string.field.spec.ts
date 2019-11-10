@@ -1,6 +1,6 @@
 import { assert } from 'chai';
-import String from './string.decorator';
-import { ObjectWithProps } from './interfaces.decorator';
+import String from './string.field';
+import { ObjectWithProps } from './interfaces.field';
 
 it('Register string decorator', () => {
 

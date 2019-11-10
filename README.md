@@ -15,6 +15,18 @@ yarn add ts-buffer-serializer
 ```
 
 ## BinarySerializer example
+### Contract (class with fields decorators)
+```ts
+class PlayerClass {
+    @fields.String() name: string;
+    @fields.Byte() level: number;
+    @fields.Integer() hp: number;
+    @fields.Short() attack: number;
+    @fields.Double() decimalValue: number;
+    @fields.Float() floatValue: number;
+}
+```
+
 ### Serializing
 ```ts
 const player = new TestClass();
